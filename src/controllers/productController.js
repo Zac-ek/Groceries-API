@@ -20,7 +20,7 @@ export const getOne=(req,res)=>{
 export const insertOne=(req,res)=>{
     console.log(req.body)
     productDao.insertOne(req.body)
-    .then(result=>res.redirect('/api/products/'))
+    .then(result=>res.redirect('//'))
     .catch(err=>res.json({status: "Server unavaliable =/"}));
 }
 export const deleteOne=(req,res)=>{
@@ -28,14 +28,14 @@ export const deleteOne=(req,res)=>{
     .then(result=>{
         !result ? res.json({
             message: "product not found"
-        }) : res.redirect('/api/products/');
+        }) : res.redirect('//');
     })
     .catch(err=>res.json({status: "Server unavaliable =/"}));
 }
 export const updateOne=(req,res)=>{
     console.log(req.body)
     productDao.updateOne(req.params.barcode, req.body)
-    .then(result=>res.redirect('/api/products/'))
+    .then(result=>res.redirect('//'))
     .catch(err=>res.json({status: "Server unavaliable =/"}));
 }
 export const getPrice=(req,res)=>{
