@@ -5,7 +5,5 @@ router.get("/", getAll);
 router.get("/:barcode", getOne);
 router.post("/",insertOne);
 router.post("/:barcode",updateOne);
-router.get("/supr/:barcode",deleteOne);
-// router.get("/", getPrice);
-// router.get("/:price", getPrime);
+router.get("/dt/:barcode",deleteOne);
 export default router;

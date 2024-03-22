@@ -1,7 +1,7 @@
 import productDao from "../dao/products.dao.js";
 export const getAll=(req,res)=>{
     productDao.getAll()
-    .then(products=> res.render('../src/views/index',{products}))
+    .then(products=> res.json())
     .catch(err=>res.json({
         status: "Server unavaliable"
     }));  
@@ -11,7 +11,7 @@ export const getOne=(req,res)=>{
     .then(product=>{
         !product ? res.json({
             message: "product not found"
-        }) : res.render('../src/views/edit',{product});
+        }) : res.json();
     })
     .catch(err=>res.json({
         status: "Server unavaliable"
@@ -20,7 +20,7 @@ export const getOne=(req,res)=>{
 export const insertOne=(req,res)=>{
     console.log(req.body)
     productDao.insertOne(req.body)
-    .then(result=>res.redirect('/'))
+    .then(result=>res.json())
     .catch(err=>res.json({status: "Server unavaliable =/"}));
 }
 export const deleteOne=(req,res)=>{
@@ -28,14 +28,14 @@ export const deleteOne=(req,res)=>{
     .then(result=>{
         !result ? res.json({
             message: "product not found"
-        }) : res.redirect('/');
+        }) : res.json();
     })
     .catch(err=>res.json({status: "Server unavaliable =/"}));
 }
 export const updateOne=(req,res)=>{
     console.log(req.body)
     productDao.updateOne(req.params.barcode, req.body)
-    .then(result=>res.redirect('/'))
+    .then(result=>res.json())
     .catch(err=>res.json({status: "Server unavaliable =/"}));
 }
 export const getPrice=(req,res)=>{
